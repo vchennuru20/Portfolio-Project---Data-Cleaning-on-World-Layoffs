@@ -1,13 +1,14 @@
 -- SQL Project on Data Cleaning on World Layoffs
 	-- 1. Remove Duplicates
 	-- 2. Standardize the Data
-    -- 3. Null Values or blank values
-    -- 4. Remove any columns
+    	-- 3. Null Values or blank values
+    	-- 4. Remove any columns
 
 -- https://www.kaggle.com/datasets/swaptr/layoffs-2022 (Layoffs Dataset)
 
 SELECT *
 FROM layoffs;
+
 
 -- 1. Remove Duplicates
 
@@ -65,6 +66,7 @@ DELETE
 FROM layoffs_staging2
 WHERE row_num > 1;
 
+
 -- 2. Standardize the Data
 
 SELECT DISTINCT(industry)
@@ -84,6 +86,7 @@ FROM layoffs_staging2;
 ALTER TABLE layoffs_staging2
 MODIFY COLUMN `date` DATE;
 
+
 -- 3. Null Values or blank values
 
 SELECT *
@@ -93,6 +96,7 @@ WHERE industry;
 UPDATE layoffs_staging2
 SET percentage_laid_off = NULL
 WHERE percentage_laid_off = '';
+
 
 -- 4. Remove any columns
 
